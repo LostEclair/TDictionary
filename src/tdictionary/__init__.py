@@ -1,4 +1,5 @@
-from logging import basicConfig, INFO
+from logging import INFO, basicConfig
+
 from .env_config import LOG_FILENAME
 
 basicConfig(

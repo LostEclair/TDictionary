@@ -2,14 +2,15 @@
 This module contains an implementation of Telegram bot.
 """
 
-from .env_config import TELEGRAM_BOT_TOKEN
+from logging import getLogger
+
 from aiogram import Bot, Dispatcher, html
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
-from aiogram.types import Message, InputTextMessageContent, InlineQueryResultArticle
-from logging import getLogger
+from aiogram.types import InlineQueryResultArticle, InputTextMessageContent, Message
 
+from .env_config import TELEGRAM_BOT_TOKEN
 from .search import search_limited_terms
 
 logger = getLogger(__name__)

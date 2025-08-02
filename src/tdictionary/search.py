@@ -3,10 +3,12 @@ This module implements search function for tdictionary.database.Term
 """
 
 from logging import getLogger
-from .database import sql_engine, Term
+
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 from sqlalchemy.orm import selectinload
-from sqlalchemy import select
+
+from .database import Term, sql_engine
 
 logger = getLogger(__name__)
 

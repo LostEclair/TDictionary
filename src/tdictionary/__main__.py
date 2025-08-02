@@ -1,5 +1,6 @@
-from .bot import run_bot
 from asyncio import run
+
+from .bot import run_bot
 from .database import initialize_database
 
 

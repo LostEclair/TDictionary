@@ -3,26 +3,24 @@ This module contains SQLAlchemy models, engine and init function.
 """
 
 from logging import getLogger
-from .env_config import DATABASE_URL
-from sqlalchemy import Integer, String, Column, ForeignKey
-from sqlalchemy.orm import relationship, backref
+
+from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.asyncio import create_async_engine
-from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import DeclarativeBase, backref, relationship
 from sqlalchemy.schema import UniqueConstraint
+
+from .env_config import DATABASE_URL
 
 logger = getLogger(__name__)
 sql_engine = create_async_engine(DATABASE_URL)
 
 
-class Base(DeclarativeBase):
-    ...
+class Base(DeclarativeBase): ...
 
 
 class AssocTermsTerms(Base):
     __tablename__ = "assoc_terms_terms"
-    __table_args__ = (
-        UniqueConstraint("term_id", "related_id", name="uq_term_relation"),
-    )
+    __table_args__ = (UniqueConstraint("term_id", "related_id", name="uq_term_relation"),)
 
     term_id = Column(Integer, ForeignKey("terms.id"), primary_key=True)
     related_id = Column(Integer, ForeignKey("terms.id"), primary_key=True)
