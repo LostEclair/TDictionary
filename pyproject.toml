@@ -1,0 +1,30 @@
+[project]
+name = "tdictionary"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "LostEclair",email = "sillyhwads@protonmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aiogram (>=3.21.0,<4.0.0)",
+    "sqlalchemy (>=2.0.42,<3.0.0)"
+]
+
+[tool.poetry.group.sqlite]
+optional = true
+dependencies = { "aiosqlite" = ">=0.20.0,<0.21.0" }
+[tool.poetry.group.postgres]
+optional = true
+dependencies = { "asyncpg" = ">=0.29.0,<0.30.0" }
+
+
+
+[tool.poetry]
+packages = [{include = "tdictionary", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
